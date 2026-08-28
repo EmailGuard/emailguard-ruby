@@ -4,11 +4,13 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **confidence** | **String** | high, medium, or low when a disposable verdict includes a confidence signal. | [optional] |
 | **detection_source** | **String** |  | [optional] |
 | **disposable** | **Boolean** |  | [optional] |
 | **disposable_provider** | **String** |  | [optional] |
 | **domain** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
+| **evidence** | [**EmailDetectEvidence**](EmailDetectEvidence.md) |  | [optional] |
 | **normalized** | **String** |  | [optional] |
 | **public_domain** | **Boolean** |  | [optional] |
 | **relay_domain** | **Boolean** |  | [optional] |
@@ -25,11 +27,13 @@
 require 'emailguard_sdk'
 
 instance = Emailguard::EmailDetectData.new(
+  confidence: null,
   detection_source: null,
   disposable: null,
   disposable_provider: null,
   domain: null,
   email: null,
+  evidence: null,
   normalized: null,
   public_domain: null,
   relay_domain: null,

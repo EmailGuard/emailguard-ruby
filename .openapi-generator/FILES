@@ -17,6 +17,7 @@ docs/CreateNotificationChannelInput.md
 docs/CreateNotificationRuleInput.md
 docs/EmailApi.md
 docs/EmailDetectData.md
+docs/EmailDetectEvidence.md
 docs/EmailDetectResponse.md
 docs/EventsApi.md
 docs/GetNotificationChannelResponse.md
@@ -67,6 +68,7 @@ lib/emailguard_sdk/models/billing_usage_response.rb
 lib/emailguard_sdk/models/create_notification_channel_input.rb
 lib/emailguard_sdk/models/create_notification_rule_input.rb
 lib/emailguard_sdk/models/email_detect_data.rb
+lib/emailguard_sdk/models/email_detect_evidence.rb
 lib/emailguard_sdk/models/email_detect_response.rb
 lib/emailguard_sdk/models/get_notification_channel_response.rb
 lib/emailguard_sdk/models/get_notification_channels_response.rb
@@ -106,6 +108,7 @@ spec/models/billing_usage_response_spec.rb
 spec/models/create_notification_channel_input_spec.rb
 spec/models/create_notification_rule_input_spec.rb
 spec/models/email_detect_data_spec.rb
+spec/models/email_detect_evidence_spec.rb
 spec/models/email_detect_response_spec.rb
 spec/models/get_notification_channel_response_spec.rb
 spec/models/get_notification_channels_response_spec.rb

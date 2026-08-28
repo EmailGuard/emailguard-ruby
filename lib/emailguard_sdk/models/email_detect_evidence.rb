@@ -14,22 +14,19 @@ require 'date'
 require 'time'
 
 module Emailguard
-  class NotificationRuleChannelInput < ApiModelBase
-    # UUID of a team notification channel. Use this or predefined, not both.
-    attr_accessor :channel_id
+  class EmailDetectEvidence < ApiModelBase
+    attr_accessor :cluster_provider
 
-    # Built-in channel identifier when not using a custom channel.
-    attr_accessor :predefined
+    attr_accessor :detection_layer
 
-    # Restrict delivery to a specific team member's user ID.
-    attr_accessor :target_user_id
+    attr_accessor :source_count
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'channel_id' => :'channel_id',
-        :'predefined' => :'predefined',
-        :'target_user_id' => :'target_user_id'
+        :'cluster_provider' => :'cluster_provider',
+        :'detection_layer' => :'detection_layer',
+        :'source_count' => :'source_count'
       }
     end
 
@@ -46,9 +43,9 @@ module Emailguard
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'channel_id' => :'String',
-        :'predefined' => :'String',
-        :'target_user_id' => :'String'
+        :'cluster_provider' => :'String',
+        :'detection_layer' => :'String',
+        :'source_count' => :'Integer'
       }
     end
 
@@ -62,28 +59,28 @@ module Emailguard
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Emailguard::NotificationRuleChannelInput` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Emailguard::EmailDetectEvidence` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Emailguard::NotificationRuleChannelInput`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Emailguard::EmailDetectEvidence`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'channel_id')
-        self.channel_id = attributes[:'channel_id']
+      if attributes.key?(:'cluster_provider')
+        self.cluster_provider = attributes[:'cluster_provider']
       end
 
-      if attributes.key?(:'predefined')
-        self.predefined = attributes[:'predefined']
+      if attributes.key?(:'detection_layer')
+        self.detection_layer = attributes[:'detection_layer']
       end
 
-      if attributes.key?(:'target_user_id')
-        self.target_user_id = attributes[:'target_user_id']
+      if attributes.key?(:'source_count')
+        self.source_count = attributes[:'source_count']
       end
     end
 
@@ -107,9 +104,9 @@ module Emailguard
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          channel_id == o.channel_id &&
-          predefined == o.predefined &&
-          target_user_id == o.target_user_id
+          cluster_provider == o.cluster_provider &&
+          detection_layer == o.detection_layer &&
+          source_count == o.source_count
     end
 
     # @see the `==` method
@@ -121,7 +118,7 @@ module Emailguard
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [channel_id, predefined, target_user_id].hash
+      [cluster_provider, detection_layer, source_count].hash
     end
 
     # Builds the object from hash
