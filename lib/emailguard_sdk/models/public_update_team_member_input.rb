@@ -14,34 +14,18 @@ require 'date'
 require 'time'
 
 module Emailguard
-  class PublicTeamResponse < ApiModelBase
-    # Contact email for the workspace.
-    attr_accessor :email
+  class PublicUpdateTeamMemberInput < ApiModelBase
+    # Internal notes about the member. Omit to leave unchanged.
+    attr_accessor :notes
 
-    # Avatar emoji.
-    attr_accessor :emoji
-
-    # Team UUID.
-    attr_accessor :id
-
-    # Display name.
-    attr_accessor :name
-
-    # Team kind (for example team or personal).
-    attr_accessor :type
-
-    # Public website URL.
-    attr_accessor :url
+    # New team role (for example Owner, Admin, Member). Omit to leave unchanged. See [Team roles and permissions](/docs/knowledge-base/team-roles-and-permissions).
+    attr_accessor :role
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'email' => :'email',
-        :'emoji' => :'emoji',
-        :'id' => :'id',
-        :'name' => :'name',
-        :'type' => :'type',
-        :'url' => :'url'
+        :'notes' => :'notes',
+        :'role' => :'role'
       }
     end
 
@@ -58,12 +42,8 @@ module Emailguard
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'email' => :'String',
-        :'emoji' => :'String',
-        :'id' => :'String',
-        :'name' => :'String',
-        :'type' => :'String',
-        :'url' => :'String'
+        :'notes' => :'String',
+        :'role' => :'String'
       }
     end
 
@@ -77,40 +57,24 @@ module Emailguard
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Emailguard::PublicTeamResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Emailguard::PublicUpdateTeamMemberInput` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Emailguard::PublicTeamResponse`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Emailguard::PublicUpdateTeamMemberInput`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'email')
-        self.email = attributes[:'email']
+      if attributes.key?(:'notes')
+        self.notes = attributes[:'notes']
       end
 
-      if attributes.key?(:'emoji')
-        self.emoji = attributes[:'emoji']
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      end
-
-      if attributes.key?(:'url')
-        self.url = attributes[:'url']
+      if attributes.key?(:'role')
+        self.role = attributes[:'role']
       end
     end
 
@@ -134,12 +98,8 @@ module Emailguard
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          email == o.email &&
-          emoji == o.emoji &&
-          id == o.id &&
-          name == o.name &&
-          type == o.type &&
-          url == o.url
+          notes == o.notes &&
+          role == o.role
     end
 
     # @see the `==` method
@@ -151,7 +111,7 @@ module Emailguard
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [email, emoji, id, name, type, url].hash
+      [notes, role].hash
     end
 
     # Builds the object from hash
